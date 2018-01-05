@@ -10,10 +10,29 @@
       <md-grid-tile *ngFor="let dish of dishes">
         <img height="200px" src={{dish.image}} alt={{dish.name}}>
         <md-grid-tile-footer>
-        	<h1 md-line>{{dish.name | uppercase}}</h1>
+          <h1 md-line>{{ dish.name | uppercase }}</h1>
         </md-grid-tile-footer>
-        <!-- <p md-line><span>{{dish.description}}</span></p> -->
       </md-grid-tile>
     </md-grid-list>
   </div>
+
+  <div fxFlex *ngIf="selectedDish">
+    <md-card>
+      <md-card-header>
+        <md-card-title>
+          <h3>{{selectedDish.name | uppercase}}</h3>
+        </md-card-title>
+      </md-card-header>
+      <img md-card-image src={{selectedDish.image}} alt={{selectedDish.name}}>
+      <md-card-content>
+        <p>{{selectedDish.description}}</p>
+      </md-card-content>
+      
+      <md-card-actions>
+        <button md-button>LIKE</button>
+        <button md-button>SHARE</button>
+      </md-card-actions>
+    </md-card>
+  </div>
+
 </div>
