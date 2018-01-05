@@ -8,13 +8,11 @@ import 'hammerjs';
 
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
-import { TestComponent } from './test/test.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenuComponent,
-    TestComponent
+    MenuComponent
   ],
   imports: [
     BrowserModule,
