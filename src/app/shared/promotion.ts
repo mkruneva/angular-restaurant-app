@@ -1,6 +1,4 @@
-import { Comment } from './comment';
-
-export class Dish {
+export class Promotion {
 	id: number;
 	name: string;
 	image: string;
