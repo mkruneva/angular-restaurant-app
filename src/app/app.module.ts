@@ -17,7 +17,7 @@ import { ContactComponent } from './components/contact/contact.component';
 
 import { DishService } from './services/dish.service';
 
-
+import { AppRoutingModule } from './app-routing/app-routing.module';
 
 
 @NgModule({
@@ -35,7 +35,8 @@ import { DishService } from './services/dish.service';
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    AppRoutingModule
   ],
   providers: [ DishService ],
   bootstrap: [ AppComponent ]
