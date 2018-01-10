@@ -3,3 +3,27 @@
   <span class="flex-spacer"></span>
   <button md-button md-dialog-close>&times;</button>
 </md-toolbar>
+
+<form novalidate (ngSubmit)="onSubmit()">
+    <md-dialog-content>
+    <p>
+      <md-input-container>
+        <input mdInput placeholder="user name" type="text" [(ngModel)]="user.username" name="username" required>
+      </md-input-container>
+      <md-input-container>
+        <input mdInput placeholder="passowrd" type="password" [(ngModel)]="user.password" name="password" required>
+      </md-input-container>
+    </p>
+    <p>
+      <md-checkbox name="remember" [(ngModel)]="user.remember">
+        Remember me
+      </md-checkbox>
+    </p>
+  </md-dialog-content>
+  <md-dialog-actions>
+    <span class="flex-spacer">
+      <button md-button md-dialog-close>Cancel</button>
+      <button md-button type="submit" class="background-primary text-floral-white">Login</button>
+    </span>
+  </md-dialog-actions>
+</form>
