@@ -8,9 +8,13 @@ import { MdDialog, MdDialogRef } from '@angular/material';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor( private dialog: MdDialog ) { }
 
   ngOnInit() {
+  }
+
+  closeLoginForm() {
+    this.dialog.closeAll();
   }
 
 }
