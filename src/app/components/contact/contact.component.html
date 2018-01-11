@@ -34,4 +34,43 @@
       </div>
     </div>
   </div>
+  <div fxFlex fxFlexOffset="20px" class="form-size">
+    <h3>Send us your feedback</h3>
+    <form novalidate [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
+      <p>
+        <md-input-container class="half-width">
+          <input mdInput formControlName="firstname" placeholder="First Name" type="text" required>
+        </md-input-container>
+        <md-input-container class="half-width">
+          <input mdInput formControlName="lastname" placeholder="Last Name" type="text" required>
+        </md-input-container>
+        <md-input-container class="half-width">
+          <input mdInput formControlName="tel" placeholder="Tel Number" type="tel" required>
+        </md-input-container>
+        <md-input-container class="half-width">
+          <input mdInput formControlName="email" placeholder="Email" type="email" required>
+        </md-input-container>
+      </p>
+      <table class="form-size">
+        <td>
+          <md-slide-toggle formControlName="agree">May we contact you?</md-slide-toggle>
+        </td>
+        <td>
+          <md-select placeholder="How?" formControlName="contactType">
+            <md-option *ngFor="let ctype of contactType" [value]="ctype">
+              {{ ctype }}
+            </md-option>
+          </md-select>
+        </td>
+      </table>
+      <p>
+        <md-input-container class="full-width">
+          <textarea mdInput formControlName="message" placeholder="Your feedback" cols="85" rows="8"></textarea>
+        </md-input-container>
+      </p>
+      <button type="submit" md-button class="background-primary text-floral-white">
+         Submit
+      </button>
+    </form>
+  </div>
 </div>
