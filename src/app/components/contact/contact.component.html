@@ -38,17 +38,30 @@
     <h3>Send us your feedback</h3>
     <form novalidate [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
       <p>
+        <!-- 
+        <md-input-container class="half-width" dividerColor="{{(feedbackForm.get('firstname').hasError('required') && feedbackForm.get('firstname').touched) ? 'primary' : 'accent'}}"> 
+        -->
         <md-input-container class="half-width">
-          <input mdInput formControlName="firstname" placeholder="First Name" type="text" required>
+          <input mdInput formControlName="firstname" placeholder="First Name *" type="text">
+          <md-hint *ngIf="feedbackForm.get('firstname').hasError('required') && feedbackForm.get('firstname').touched">
+            <span>
+              First Name is required
+            </span>
+        </md-hint>
         </md-input-container>
         <md-input-container class="half-width">
-          <input mdInput formControlName="lastname" placeholder="Last Name" type="text" required>
+          <input mdInput formControlName="lastname" placeholder="Last Name *" type="text">
+          <md-hint *ngIf="feedbackForm.get('lastname').hasError('required') && feedbackForm.get('lastname').touched">
+              <span>
+                Last Name is required
+              </span>
+          </md-hint>
         </md-input-container>
         <md-input-container class="half-width">
-          <input mdInput formControlName="tel" placeholder="Tel Number" type="tel" required>
+          <input mdInput formControlName="tel" placeholder="Tel Number" type="tel">
         </md-input-container>
         <md-input-container class="half-width">
-          <input mdInput formControlName="email" placeholder="Email" type="email" required>
+          <input mdInput formControlName="email" placeholder="Email" type="email">
         </md-input-container>
       </p>
       <table class="form-size">
@@ -65,10 +78,15 @@
       </table>
       <p>
         <md-input-container class="full-width">
-          <textarea mdInput formControlName="message" placeholder="Your feedback" cols="85" rows="8"></textarea>
+          <textarea mdInput formControlName="message" placeholder="Your feedback *" cols="85" rows="8"></textarea>
+          <md-hint *ngIf="feedbackForm.get('message').hasError('required') && feedbackForm.get('message').touched">
+              <span>
+                Message is required
+              </span>
+          </md-hint>
         </md-input-container>
       </p>
-      <button type="submit" md-button class="background-primary text-floral-white">
+      <button type="submit" md-button class="background-primary text-floral-white" [disabled]="feedbackForm.invalid">
          Submit
       </button>
     </form>
