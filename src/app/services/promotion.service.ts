@@ -1,22 +1,33 @@
 import { Injectable } from '@angular/core';
 import { Promotion } from '../shared/promotion';
 import { PROMOTIONS } from '../shared/promotions';
+import { Promise } from 'q';
+// import { resolve } from 'path';
 
 @Injectable()
 export class PromotionService {
 
   constructor() { }
 
-  getPromotions(): Promotion[] {
-  	    return PROMOTIONS;
+  getPromotions(): Promise<Promotion[]> {
+    return Promise(resolve => {
+      // Simulate server latency with 2 second delay
+      setTimeout(() => resolve(PROMOTIONS), 2000);
+    });
   }
 
-  getPromotion(id:number): Promotion {
-        return PROMOTIONS.filter( promotion => (promotion.id === id))[0]; //change to promo 
+  getPromotion(id: number): Promise<Promotion> {
+    return Promise(resolve => {
+      // Simulate server latency with 2 second delay
+      setTimeout(() => resolve(PROMOTIONS.filter((promo) => (promo.id === id))[0]), 2000);
+    });
   }
 
-  getFeaturedPromotion(): Promotion {
-  		return PROMOTIONS.filter( promotion => promotion.featured)[0]; //change to promo 
+  getFeaturedPromotion(): Promise<Promotion> {
+    return  Promise(resolve => {
+      // Simulate server latency with 2 second delay
+      setTimeout(() => resolve(PROMOTIONS.filter((promo) => promo.featured)[0]), 2000);
+    });
   }
 
 }

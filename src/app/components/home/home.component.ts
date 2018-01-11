@@ -17,16 +17,21 @@ import { LeaderService } from '../../services/leader.service';
 export class HomeComponent implements OnInit {
 
   dish: Dish;
-  promotion: Promotion; 
+  promotion: Promotion;
   leader: Leader;
-  
-  constructor(private dishService: DishService, 
-              private promotionService: PromotionService, 
-              private leaderService: LeaderService,) {
 
-  	 this.dish = this.dishService.getFeaturedDish();
-  	 this.promotion = this.promotionService.getFeaturedPromotion();
-     this.leader = this.leaderService.getFeaturedLeader();
+  constructor(private dishService: DishService,
+              private promotionService: PromotionService,
+              private leaderService: LeaderService) {
+
+    this.dishService.getFeaturedDish()
+      .then(dish => this.dish = dish);
+
+    this.promotionService.getFeaturedPromotion()
+      .then(promo => this.promotion = promo);
+
+    this.leaderService.getFeaturedLeader()
+      .then(lead => this.leader = lead);
 
   }
 
