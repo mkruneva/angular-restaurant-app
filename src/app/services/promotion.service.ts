@@ -12,16 +12,16 @@ export class PromotionService {
 
   constructor() { }
 
-  getPromotions() {
-    return Observable.of(PROMOTIONS).delay(2000).toPromise;
+  getPromotions(): Observable<Promotion[]> {
+    return Observable.of(PROMOTIONS).delay(2000);
   }
 
-  getPromotion(id: number) {
-    return Observable.of(PROMOTIONS.filter((promo) => (promo.id === id))[0]).delay(2000).toPromise;
+  getPromotion(id: number): Observable<Promotion> {
+    return Observable.of(PROMOTIONS.filter((promo) => (promo.id === id))[0]).delay(2000);
   }
 
-  getFeaturedPromotion() {
-    return Observable.of(PROMOTIONS.filter((promo) => promo.featured)[0]).delay(2000).toPromise;
+  getFeaturedPromotion(): Observable<Promotion> {
+    return Observable.of(PROMOTIONS.filter((promo) => promo.featured)[0]).delay(2000);
   }
 
 }

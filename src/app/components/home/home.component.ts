@@ -25,13 +25,13 @@ export class HomeComponent implements OnInit {
               private leaderService: LeaderService) {
 
     this.dishService.getFeaturedDish()
-      .then(dish => this.dish = dish);
+      .subscribe(dish => this.dish = dish);
 
     this.promotionService.getFeaturedPromotion()
-      .then(promo => this.promotion = promo);
+      .subscribe(promo => this.promotion = promo);
 
     this.leaderService.getFeaturedLeader()
-      .then(lead => this.leader = lead);
+      .subscribe(lead => this.leader = lead);
 
   }
 
