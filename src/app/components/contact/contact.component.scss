@@ -9,3 +9,8 @@
 .form-size {
     width: 75%;
 }
+
+button[type=submit]:disabled {
+    background-color: #8174a0 !important;
+}
+
