@@ -44,7 +44,7 @@
             </md-hint>
           </md-input-container>
         </p>
-        <md-slider min="1" max="5" step="1" value="5" formControlName="rating" [value]="5"></md-slider>
+        <md-slider min="1" max="5" step="1" value="5" thumbLabel tickInterval="1" formControlName="rating" [value]="5"></md-slider>
         <p>
           <md-input-container dividerColor="{{(formErrors.message) ? 'warn' : 'primary'}}">
             <textarea mdInput formControlName="message" placeholder="Your comment *"></textarea>
