@@ -34,22 +34,28 @@
           <p md-line><i>-- {{comment.author}}, </i><span>{{comment.date | date}}</span></p>
         </md-list-item>
       </md-list>
+      <md-list>
+          <h2>your comment</h2>
+          <md-list-item>
+            <!-- Live preview -->
+          </md-list-item>
+        </md-list>
       <form novalidate [formGroup]="commentForm" (ngSubmit)="onSubmit()">
         <p>
           <!-- mat-form-field covers 100% of the width -->
-          <md-input-container dividerColor="{{(formErrors.name) ? 'warn' : 'primary'}}">
-            <input mdInput formControlName="name" placeholder="Name *" type="text">
-            <md-hint *ngIf="(formErrors.name)">
-              <span>{{formErrors.name}}</span>
+          <md-input-container dividerColor="{{(formErrors.author) ? 'warn' : 'primary'}}">
+            <input mdInput formControlName="author" placeholder="Name *" type="text">
+            <md-hint *ngIf="(formErrors.author)">
+              <span>{{formErrors.author}}</span>
             </md-hint>
           </md-input-container>
         </p>
         <md-slider min="1" max="5" step="1" value="5" thumbLabel tickInterval="1" formControlName="rating" [value]="5"></md-slider>
         <p>
-          <md-input-container dividerColor="{{(formErrors.message) ? 'warn' : 'primary'}}">
-            <textarea mdInput formControlName="message" placeholder="Your comment *"></textarea>
-            <md-hint *ngIf="(formErrors.message)">
-                 <span>{{formErrors.message}}</span>
+          <md-input-container dividerColor="{{(formErrors.comment) ? 'warn' : 'primary'}}">
+            <textarea mdInput formControlName="comment" placeholder="Your comment *" rows="8"></textarea>
+            <md-hint *ngIf="(formErrors.comment)">
+                 <span>{{formErrors.comment}}</span>
             </md-hint>
           </md-input-container>
         </p>
