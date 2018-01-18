@@ -1,3 +1,7 @@
 button[type=submit]:disabled {
     background-color: #8174a0 !important;
 }
+
+.comment-preview h3, .comment-preview p {
+    color: #797979;
+}

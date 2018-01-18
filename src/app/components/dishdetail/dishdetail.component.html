@@ -34,7 +34,7 @@
           <p md-line><i>-- {{comment.author}}, </i><span>{{comment.date | date}}</span></p>
         </md-list-item>
       </md-list>
-      <md-list *ngIf="(!commentForm.invalid)">
+      <md-list class="comment-preview" *ngIf="(!commentForm.invalid)">
           <h3>Your comment Preview</h3>
           <md-list-item>
             <p md-line>{{commentForm.value.comment}}</p>
