@@ -25,7 +25,7 @@
   </div>
   <div *ngIf="dish">
     <div fxFlex="5"></div>
-    <div fxFlex="45">
+    <div fxFlex="95">
       <md-list>
         <h2>Comments</h2>
         <md-list-item *ngFor="let comment of dish.comments">
@@ -34,7 +34,32 @@
           <p md-line><i>-- {{comment.author}}, </i><span>{{comment.date | date}}</span></p>
         </md-list-item>
       </md-list>
+      <form novalidate [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+        <p>
+          <!-- mat-form-field covers 100% of the width -->
+          <md-input-container dividerColor="{{(formErrors.name) ? 'warn' : 'primary'}}">
+            <input mdInput formControlName="name" placeholder="Name *" type="text">
+            <md-hint *ngIf="(formErrors.name)">
+              <span>{{formErrors.name}}</span>
+            </md-hint>
+          </md-input-container>
+        </p>
+        <md-slider min="1" max="5" step="1" value="5" formControlName="rating" [value]="5"></md-slider>
+        <p>
+          <md-input-container dividerColor="{{(formErrors.message) ? 'warn' : 'primary'}}">
+            <textarea mdInput formControlName="message" placeholder="Your comment *"></textarea>
+            <md-hint *ngIf="(formErrors.message)">
+                 <span>{{formErrors.message}}</span>
+            </md-hint>
+          </md-input-container>
+        </p>
+        <button type="submit" md-button class="background-primary text-floral-white" [disabled]="commentForm.invalid">
+          Submit
+        </button>
+      </form>
     </div>
+    
+    
   </div>
   <div [hidden]="dish">
       <md-spinner></md-spinner><h4>Loading . . . Please Wait</h4>
