@@ -3,7 +3,6 @@ import { Promotion } from '../shared/promotion';
 import { baseURL} from '../shared/baseurl';
 import { Http, Response } from '@angular/http';
 import { ProcessHttpmsgService } from './process-httpmsg.service';
-import { PROMOTIONS } from '../shared/promotions'; // remove
 import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/observable/of';
@@ -19,17 +18,20 @@ export class PromotionService {
 
   getPromotions(): Observable<Promotion[]> {
     return this.http.get(baseURL + 'promotions')
-             .map(res => this.procssHTTPservice.extractData(res));
+             .map(res => this.procssHTTPservice.extractData(res))
+             .catch(err => this.procssHTTPservice.handleError(err));
   }
 
   getPromotion(id: number): Observable<Promotion> {
     return  this.http.get(baseURL + 'promotions/' + id)
-                    .map(res => this.procssHTTPservice.extractData(res));
+                    .map(res => this.procssHTTPservice.extractData(res))
+                    .catch(err => this.procssHTTPservice.handleError(err));
   }
 
   getFeaturedPromotion(): Observable<Promotion> {
     return this.http.get(baseURL + 'promotions?featured=true')
-                    .map(res => this.procssHTTPservice.extractData(res)[0]);
+                    .map(res => this.procssHTTPservice.extractData(res)[0])
+                    .catch(err => this.procssHTTPservice.handleError(err));;
   }
 
 }

@@ -19,12 +19,14 @@ export class LeaderService {
 
   getLeaders(): Observable<Leader[]> {
       return this.http.get(baseURL + 'leaders')
-             .map(res => this.procssHTTPservice.extractData(res));
+          .map(res => this.procssHTTPservice.extractData(res))
+          .catch(err => this.procssHTTPservice.handleError(err));
   }
 
   getFeaturedLeader(): Observable<Leader> {
       return this.http.get(baseURL + 'leaders?featured=true')
-                    .map(res => this.procssHTTPservice.extractData(res)[0]);
+          .map(res => this.procssHTTPservice.extractData(res)[0])
+          .catch(err => this.procssHTTPservice.handleError(err));
   }
 
 }

@@ -11,12 +11,14 @@ import { LeaderService } from '../../services/leader.service';
 export class AboutComponent implements OnInit {
 
   leaders: Leader[];
+  errMsg: string;
 
   constructor( private leaderService: LeaderService, @Inject('BaseURL') private BaseURL ) { }
 
   ngOnInit() {
     this.leaderService.getLeaders()
-      .subscribe((leaders => this.leaders = leaders));
+      .subscribe(leaders => this.leaders = leaders,
+                 errmsg => this.errMsg = <any>errmsg);
   }
 
 }
