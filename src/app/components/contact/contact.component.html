@@ -88,14 +88,14 @@
       </button>
     </form>
   </div>
-  <div fxFlex fxFlexOffset="20px" class="form-size" *ngIf="feedbackForm.valid">
-    <h2>Your feedback</h2>
-    <div>First name: {{feedbackForm.value.firstname}}</div>
-    <div>Last name: {{feedbackForm.value.lastname}}</div>
-    <div>Tel: {{feedbackForm.value.tel}}</div>
-    <div>Email: {{feedbackForm.value.email}}</div>
-    <div>May we constact you? : {{feedbackForm.value.agree}}</div>
-    <div>How? : {{feedbackForm.value.ctype}}</div>
-    <div>Message: {{feedbackForm.value.message}}</div>
+  <div fxFlex fxFlexOffset="20px" class="form-size preview" *ngIf="feedbackForm.valid">
+    <h3>Your feedback Preview</h3>
+    <p>First name: {{feedbackForm.value.firstname}}</p>
+    <p>Last name: {{feedbackForm.value.lastname}}</p>
+    <p>Tel: {{feedbackForm.value.tel}}</p>
+    <p>Email: {{feedbackForm.value.email}}</p>
+    <p>May we constact you? : {{feedbackForm.value.agree}}</p>
+    <p>How? : {{feedbackForm.value.ctype}}</p>
+    <p>Message: {{feedbackForm.value.message}}</p>
   </div>
 </div>
