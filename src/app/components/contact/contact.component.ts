@@ -12,7 +12,6 @@ export class ContactComponent implements OnInit {
 
   feedbackForm: FormGroup;
   feedback: Feedback;
-  oldFeedback: Feedback[];
   errMsg: string;
   contactType = ContactType;
   formErrors = {
@@ -50,9 +49,6 @@ export class ContactComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.feedbackService.getFeedback()
-      .subscribe(feedback => {this.oldFeedback = feedback; console.log(this.oldFeedback); },
-                 errmsg => this.errMsg = <any>errmsg);
   }
 
   onValueChange(data?: any) {
@@ -90,6 +86,7 @@ export class ContactComponent implements OnInit {
   onSubmit() {
     this.feedback = this.feedbackForm.value;
     console.log('feedback: ', this.feedback);
+    this.feedbackService.submitFeedback(this.feedback);
     this.feedbackForm.reset({
       firstname: '',
       lastname: '',

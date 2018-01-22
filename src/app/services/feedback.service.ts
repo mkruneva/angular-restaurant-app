@@ -12,4 +12,8 @@ export class FeedbackService {
     return this.restangular.all('feedback').getList();
   }
 
-}
+  submitFeedback(submitedFeedback: Feedback) {
+    console.log(this.restangular.all('feedback').getList());
+    this.restangular.all('feedback').post(submitedFeedback);
+  }
+ }
