@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormGroupDirective } from '@angular/forms';
 import { Feedback, ContactType } from '../../shared/feedback';
 import { FeedbackService } from '../../services/feedback.service';
 
@@ -11,6 +11,7 @@ import { FeedbackService } from '../../services/feedback.service';
 export class ContactComponent implements OnInit {
 
   feedbackForm: FormGroup;
+  @ViewChild(FormGroupDirective) feedbackFormDirective;
   feedback: Feedback;
   errMsg: string;
   contactType = ContactType;
@@ -87,15 +88,7 @@ export class ContactComponent implements OnInit {
     this.feedback = this.feedbackForm.value;
     console.log('feedback: ', this.feedback);
     this.feedbackService.submitFeedback(this.feedback);
-    this.feedbackForm.reset({
-      firstname: '',
-      lastname: '',
-      tel: '',
-      email: '',
-      agree: false,
-      contactType: 'None',
-      message: ''
-    });
+    this.feedbackFormDirective.resetForm();
   }
 
 }
