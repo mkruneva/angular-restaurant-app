@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Leader } from '../shared/leader';
-import { baseURL} from '../shared/baseurl';
+import { baseURL } from '../shared/baseurl';
 import { Http, Response } from '@angular/http';
 import { ProcessHttpmsgService } from './process-httpmsg.service';
 import { Observable } from 'rxjs/Observable';
