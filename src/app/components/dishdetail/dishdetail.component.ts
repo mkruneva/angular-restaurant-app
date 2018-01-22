@@ -20,6 +20,7 @@ import 'rxjs/add/operator/switchMap';
 export class DishdetailComponent implements OnInit {
 
   dish: Dish;
+  dishcopy = null;
   dishIds: number[];
   prev: number;
   next: number;
@@ -57,7 +58,7 @@ export class DishdetailComponent implements OnInit {
 
    this.route.params
      .switchMap((params: Params ) => this.dishService.getDish(+params['id']))
-     .subscribe(dish => { this.dish = dish; this.findPrevNext(this.dish.id); },
+     .subscribe(dish => { this.dish = dish; this.dishcopy = dish; this.findPrevNext(this.dish.id); },
                 errmsg => this.errMsg = <any>errmsg);
   }
 
@@ -102,9 +103,10 @@ export class DishdetailComponent implements OnInit {
   onSubmit() {
     this.userComment = this.commentForm.value;
     const d = new Date();
-    console.log(this.userComment);
     this.userComment.date = d.toISOString();
-    this.dish.comments.push(this.userComment);
+    this.dishcopy.comments.push(this.userComment);
+    this.dishcopy.save()
+      .subscribe(dish => { this.dish = dish; console.log(this.dish); });
     this.commentForm.reset({
       rating: 5,
       comment: '',
