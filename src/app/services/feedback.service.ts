@@ -12,4 +12,8 @@ export class FeedbackService {
     return this.restangular.all('feedback').getList();
   }
 
+  testF() {
+    console.log('feedbackService works');
+  }
+
 }
