@@ -5,8 +5,8 @@
       <hr>
     </div>
   </div>
-  <div fxFlex>
-    <md-grid-list cols="2" rowHeight="200px">
+  <div fxFlex *ngIf="dishes">
+    <md-grid-list cols="2" rowHeight="200px">  
       <md-grid-tile *ngFor="let dish of dishes" [routerLink]="['/dishdetail', dish.id]">
         <img height="200px" src="{{BaseURL + dish.image}}" alt={{dish.name}}>
         <md-grid-tile-footer>
@@ -15,7 +15,11 @@
       </md-grid-tile>
     </md-grid-list>
   </div>
-  <div [hidden]="dishes">
+  <div *ngIf="errMsg">
+      <h2>Error</h2>
+      <p>{{errMsg}}</p>
+  </div>
+  <div [hidden]="dishes || errMsg">
     <md-spinner></md-spinner><h4>Loading . . . Please Wait</h4>
   </div>
 </div>
