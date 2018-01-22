@@ -66,11 +66,13 @@
         </button>
       </form>
     </div>
-    
-    
   </div>
-  <div [hidden]="dish">
-      <md-spinner></md-spinner><h4>Loading . . . Please Wait</h4>
+  <div *ngIf="errMsg">
+    <h2>Error</h2>
+    <p>{{errMsg}}</p>
+  </div>
+  <div [hidden]="dish || errMsg">
+    <md-spinner></md-spinner><h4>Loading . . . Please Wait</h4>
   </div>
 </div>
 
