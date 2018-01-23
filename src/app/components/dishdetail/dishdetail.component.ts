@@ -1,20 +1,32 @@
 import { Component, OnInit, ViewChild, Inject } from '@angular/core';
-
+import { FormBuilder, FormGroup, Validators, FormGroupDirective } from '@angular/forms';
 import { Dish } from '../../shared/dish';
-import { DishService } from '../../services/dish.service';
 import { Comment } from '../../shared/comment';
+import { DishService } from '../../services/dish.service';
 
 import { Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-
-import { FormBuilder, FormGroup, Validators, FormGroupDirective } from '@angular/forms';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'app-dishdetail',
   templateUrl: './dishdetail.component.html',
-  styleUrls: ['./dishdetail.component.scss']
+  styleUrls: ['./dishdetail.component.scss'],
+  animations: [
+    trigger('visibility', [
+      state('shown', style({
+        transform: 'scale(1.0)',
+        opacity: 1
+      })),
+      state('hidden', style({
+        transform: 'scale(0.5)',
+        opacity: 0
+      })),
+      transition('* => *', animate('0.5s ease-in-out'))
+    ])
+  ]
 })
 
 export class DishdetailComponent implements OnInit {
@@ -26,6 +38,7 @@ export class DishdetailComponent implements OnInit {
   next: number;
   commentForm: FormGroup;
   errMsg: string;
+  visibility = 'shown';
 
   @ViewChild(FormGroupDirective) commentFormDirective;
   userComment: Comment;
@@ -57,8 +70,8 @@ export class DishdetailComponent implements OnInit {
     .subscribe(dishIds => this.dishIds = dishIds);
 
    this.route.params
-     .switchMap((params: Params ) => this.dishService.getDish(+params['id']))
-     .subscribe(dish => { this.dish = dish; this.dishcopy = dish; this.findPrevNext(this.dish.id); },
+     .switchMap((params: Params ) => { this.visibility = 'hidden'; return this.dishService.getDish(+params['id']); } )
+     .subscribe(dish => { this.visibility = 'shown'; this.dish = dish; this.dishcopy = dish; this.findPrevNext(this.dish.id); },
                 errmsg => this.errMsg = <any>errmsg);
   }
 
