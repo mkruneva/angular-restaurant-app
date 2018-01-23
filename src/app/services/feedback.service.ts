@@ -8,11 +8,8 @@ export class FeedbackService {
 
   constructor(private restangular: Restangular) { }
 
-  getFeedback() {
-    return this.restangular.all('feedback').getList();
-  }
-
   submitFeedback(submitedFeedback: Feedback) {
     this.restangular.all('feedback').post(submitedFeedback);
   }
+
  }
