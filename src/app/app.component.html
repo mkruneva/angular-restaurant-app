@@ -1,6 +1,8 @@
 <app-header></app-header>
 
-<router-outlet></router-outlet>
+<div [@routeChange]="getPage(appOutlet)">
+    <router-outlet #appOutlet="outlet"></router-outlet>
+</div>
 
 <app-footer></app-footer>
 

@@ -15,12 +15,7 @@ import { flyInOut, expand } from '../../animations/app.animation';
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  host: {
-    '[@flyInOut]': 'true',
-    'style': 'display: block;'
-  },
   animations: [
-    flyInOut(),
     expand()
   ]
 })

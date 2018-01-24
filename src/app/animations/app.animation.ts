@@ -1,4 +1,5 @@
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { group, query, animateChild } from '@angular/animations';
 
 export function visibility() {
     return trigger('visibility', [
@@ -27,6 +28,35 @@ export function flyInOut() {
     ]);
 }
 
+export function routeChange() {
+    return trigger('routeChange', [
+        state('*', style({ opacity: 1, transform: 'translateX(0)'})),
+        transition('* <=> *', [
+          group([
+            query(
+              ':enter',
+              [
+                style({
+                  opacity: 0,
+                  transform: 'translateX(-100%)'
+                }),
+                animate(
+                  '3s ease-in'
+                ),
+                animateChild()
+              ],
+              { optional: true }
+            ),
+            query(
+              ':leave',
+              [animate('3s ease-in', style({ opacity: 0, transform: 'translateX(100%)' })), animateChild()],
+              { optional: true }
+            )
+          ])
+        ])
+      ]);
+}
+
 export function expand() {
     return trigger('expand', [
         state('*', style({ opacity: 1, transform: 'translateX(0)' })),
@@ -36,3 +66,4 @@ export function expand() {
         ])
     ]);
 }
+

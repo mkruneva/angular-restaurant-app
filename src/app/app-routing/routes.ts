@@ -7,10 +7,10 @@ import { AboutComponent } from '../components/about/about.component';
 import { ContactComponent } from '../components/contact/contact.component';
 
 export const routes: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path: 'about', component: AboutComponent },
-  { path: 'contact', component: ContactComponent },
-  { path: 'menu', component: MenuComponent },
-  { path: 'dishdetail/:id', component: DishdetailComponent },
+  { path: 'home', component: HomeComponent, data: { page: 'home' } },
+  { path: 'about', component: AboutComponent, data: { page: 'about' } },
+  { path: 'contact', component: ContactComponent, data: { page: 'contact' } },
+  { path: 'menu', component: MenuComponent, data: { page: 'menu' } },
+  { path: 'dishdetail/:id', component: DishdetailComponent, data: { page: 'dishdetail' } },
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];

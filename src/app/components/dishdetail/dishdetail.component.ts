@@ -6,7 +6,7 @@ import { DishService } from '../../services/dish.service';
 
 import { Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { visibility, flyInOut, expand } from '../../animations/app.animation';
+import { visibility, expand } from '../../animations/app.animation';
 
 import 'rxjs/add/operator/switchMap';
 
@@ -14,13 +14,8 @@ import 'rxjs/add/operator/switchMap';
   selector: 'app-dishdetail',
   templateUrl: './dishdetail.component.html',
   styleUrls: ['./dishdetail.component.scss'],
-  host: {
-    '[@flyInOut]': 'true',
-    'style': 'display: block;'
-  },
   animations: [
     visibility(),
-    flyInOut(),
     expand()
   ]
 })
