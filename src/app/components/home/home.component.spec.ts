@@ -70,6 +70,26 @@ describe('HomeComponent', () => {
   });
 
   it('should create', () => {
+    console.log(component);
     expect(component).toBeTruthy();
   });
+
+  it('dish item to be correct', () => {
+    expect(component.dish).toBeTruthy();
+    expect(component.dish.id).toBe(0);
+    expect(component.dish.category).toBe('mains');
+  });
+
+  it('leader item to be correct', () => {
+    expect(component.leader).toBeTruthy();
+    expect(component.leader.abbr).toBe('CEO');
+    expect(component.leader.name).toBe('Peter Pan');
+  });
+
+  it('leader item to be correct', () => {
+    expect(component.promotion).toBeTruthy();
+    expect(component.promotion.label).toBe('New');
+    expect(component.promotion.price).toEqual('19.99');
+  });
+
 });
