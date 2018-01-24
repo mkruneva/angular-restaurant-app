@@ -22,7 +22,7 @@ describe('AboutComponent', () => {
   let fixture: ComponentFixture<AboutComponent>;
 
   const LeaderServiceStub = {
-    getLeaders: function() {
+    getLeaders: function(): Observable<Leader[]> {
       return Observable.of(LEADERS);
     }
   };
