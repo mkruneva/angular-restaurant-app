@@ -69,6 +69,6 @@ describe('MenuComponent', () => {
 
     expect(el.textContent).toContain(DISHES[0].name.toUpperCase());
 
-    });
+  });
 
 });

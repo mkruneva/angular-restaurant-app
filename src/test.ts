@@ -27,7 +27,7 @@ getTestBed().initTestEnvironment(
 // Then we find all the tests.
 // const context = require.context('./', true, /\.spec\.ts$/); // all tests
 // Testing men component only
-const context = require.context('./', true, /menu\.component\.spec\.ts$/);
+const context = require.context('./', true, /about\.component\.spec\.ts$/);
 // Meni and about component
 // const context = require.context('./', true, [/menu\.component\.spec\.ts$/, /about\.component\.spec\.ts$/]);
 
