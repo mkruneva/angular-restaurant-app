@@ -97,8 +97,9 @@ export class ContactComponent implements OnInit {
   onSubmit() {
     this.submitting = true;
     this.feedbackService.getFeedback().post(this.feedbackForm.value)
-      .subscribe((feed) => { console.log(feed);
+      .subscribe((feed) => {
                              this.submitted = true;
+                             setTimeout(() => { this.submitted = false; }, 5000);
                              this.submitting = false;
                              this.feedback = feed;
                             });
