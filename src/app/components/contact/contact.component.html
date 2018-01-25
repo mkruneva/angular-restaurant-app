@@ -34,7 +34,7 @@
       </div>
     </div>
   </div>
-  <div fxFlex fxFlexOffset="20px" class="form-size">
+  <div fxFlex fxFlexOffset="20px" class="form-size" *ngIf="!submitted && !submitting">
     <h3>Send us your feedback</h3>
     <form novalidate [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
       <p>
@@ -88,14 +88,20 @@
       </button>
     </form>
   </div>
-  <div fxFlex fxFlexOffset="20px" class="form-size preview" *ngIf="feedbackForm.valid">
-    <h3>Your feedback Preview</h3>
-    <p>First name: {{feedbackForm.value.firstname}}</p>
-    <p>Last name: {{feedbackForm.value.lastname}}</p>
-    <p>Tel: {{feedbackForm.value.tel}}</p>
-    <p>Email: {{feedbackForm.value.email}}</p>
-    <p>May we constact you? : {{feedbackForm.value.agree}}</p>
-    <p>How? : {{feedbackForm.value.ctype}}</p>
-    <p>Message: {{feedbackForm.value.message}}</p>
+  <div fxFlex fxFlexOffset="20px" class="form-size" *ngIf="submitting">
+    <div>
+      <h3>Submitting Form . . . </h3>
+      <md-spinner></md-spinner>
+    </div>
+  </div>
+  <div fxFlex fxFlexOffset="20px" class="form-size" *ngIf="submitted">
+    <h3>Your Submission</h3>
+    <p>First name: {{feedback.firstname}}</p>
+    <p>Last name: {{feedback.lastname}}</p>
+    <p>Tel: {{feedback.tel}}</p>
+    <p>Email: {{feedback.email}}</p>
+    <p>May we constact you? : {{feedback.agree}}</p>
+    <p>How? : {{feedback.contactType}}</p>
+    <p>Message: {{feedback.message}}</p>
   </div>
 </div>

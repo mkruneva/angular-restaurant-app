@@ -30,6 +30,8 @@ export class ContactComponent implements OnInit {
     email: '',
     message: ''
   };
+  submitted = false;
+  submitting = false;
 
   validationMessages = {
     'firstname': {
@@ -93,9 +95,13 @@ export class ContactComponent implements OnInit {
   }
 
   onSubmit() {
-    this.feedback = this.feedbackForm.value;
-    console.log('feedback: ', this.feedback);
-    this.feedbackService.submitFeedback(this.feedback);
+    this.submitting = true;
+    this.feedbackService.getFeedback().post(this.feedbackForm.value)
+      .subscribe((feed) => { console.log(feed);
+                             this.submitted = true;
+                             this.submitting = false;
+                             this.feedback = feed;
+                            });
     this.feedbackFormDirective.resetForm();
   }
 
