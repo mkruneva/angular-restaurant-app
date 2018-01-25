@@ -34,7 +34,7 @@
       </div>
     </div>
   </div>
-  <div fxFlex fxFlexOffset="20px" class="form-size" *ngIf="!submitted && !submitting" [@expand]>
+  <div fxFlex fxFlexOffset="20px" class="form-size" *ngIf="!submitted && !submitting" [@expandVis]>
     <h3>Send us your feedback</h3>
     <form novalidate [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
       <p>
@@ -88,13 +88,13 @@
       </button>
     </form>
   </div>
-  <div fxFlex fxFlexOffset="20px" class="form-size" *ngIf="submitting" [@expand]>
+  <div fxFlex fxFlexOffset="20px" class="form-size" *ngIf="submitting" [@expandVis]>
     <div>
       <h3>Submitting Form . . . </h3>
       <md-spinner></md-spinner>
     </div>
   </div>
-  <div fxFlex fxFlexOffset="20px" class="form-size" *ngIf="submitted" [@expand]>
+  <div fxFlex fxFlexOffset="20px" class="form-size" *ngIf="submitted" [@expandVis]>
     <h3>Your Submission</h3>
     <p>First name: {{feedback.firstname}}</p>
     <p>Last name: {{feedback.lastname}}</p>

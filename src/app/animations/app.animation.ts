@@ -14,6 +14,16 @@ export function visibility() {
       ]);
 }
 
+export function expandVis() {
+    return trigger('expandVis', [
+        state('*', style({ opacity: 1, transform: 'scale(1.0)' })),
+        transition(':enter', [
+            style({ transform: 'scale(0.5)', opacity: 0 }),
+            animate('200ms ease-in', style({ opacity: 1, transform: 'scale(1.0)' }))
+        ])
+    ]);
+}
+
 export function flyInOut() {
     return trigger('flyInOut', [
         state('*', style({ opacity: 1, transform: 'translateX(0)'})),
