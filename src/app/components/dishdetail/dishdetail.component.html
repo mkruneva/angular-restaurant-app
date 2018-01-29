@@ -1,67 +1,67 @@
 <div class="container" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="10px">
   <div fxFlex="50" *ngIf="dish" [@visibility]="visibility" [@expand]>
-    <md-card>
-      <md-card-header>
-        <md-card-title>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
           <h3>{{dish.name | uppercase}}</h3>
-        </md-card-title>
-      </md-card-header>
-      <img md-card-image src="{{BaseURL + dish.image}}" alt={{dish.name}}>
-      <md-card-content>
+        </mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="{{BaseURL + dish.image}}" alt={{dish.name}}>
+      <mat-card-content>
         <p>{{dish.description}}</p>
-      </md-card-content>
-      <md-card-actions>
-        <button md-button [routerLink]="['/dishdetail', prev]">
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button [routerLink]="['/dishdetail', prev]">
           <span class="fa fa-chevron-left fa-lg"></span>
         </button>
-        <button md-button [routerLink]="['/dishdetail', next]">
+        <button mat-button [routerLink]="['/dishdetail', next]">
           <span class="fa fa-chevron-right fa-lg"></span>
         </button>
-        <!-- <button md-button (click)="goBack()">BACK</button> -->
-        <button md-button>LIKE</button>
-        <button md-button>SHARE</button>
-      </md-card-actions>
-    </md-card>
+        <!-- <button mat-button (click)="goBack()">BACK</button> -->
+        <button mat-button>LIKE</button>
+        <button mat-button>SHARE</button>
+      </mat-card-actions>
+    </mat-card>
   </div>
   <div *ngIf="dish" [@visibility]="visibility" [@expand]>
     <div fxFlex="5"></div>
     <div fxFlex="95">
-      <md-list>
+      <mat-list>
         <h2>Comments</h2>
-        <md-list-item *ngFor="let comment of dish.comments">
-          <p md-line>{{comment.comment}}</p>
-          <p md-line>{{comment.rating}} stars</p>
-          <p md-line><i>-- {{comment.author}}, </i><span>{{comment.date | date}}</span></p>
-        </md-list-item>
-      </md-list>
-      <md-list class="comment-preview" *ngIf="(!commentForm.invalid)">
+        <mat-list-item *ngFor="let comment of dish.comments">
+          <p mat-line>{{comment.comment}}</p>
+          <p mat-line>{{comment.rating}} stars</p>
+          <p mat-line><i>-- {{comment.author}}, </i><span>{{comment.date | date}}</span></p>
+        </mat-list-item>
+      </mat-list>
+      <mat-list class="comment-preview" *ngIf="(!commentForm.invalid)">
           <h3>Your comment Preview</h3>
-          <md-list-item>
-            <p md-line>{{commentForm.value.comment}}</p>
-            <p md-line>{{commentForm.value.rating}} stars</p>
-            <p md-line><i>-- {{commentForm.value.author}} </i></p>
-          </md-list-item>
-        </md-list>
+          <mat-list-item>
+            <p mat-line>{{commentForm.value.comment}}</p>
+            <p mat-line>{{commentForm.value.rating}} stars</p>
+            <p mat-line><i>-- {{commentForm.value.author}} </i></p>
+          </mat-list-item>
+        </mat-list>
       <form novalidate [formGroup]="commentForm" (ngSubmit)="onSubmit()">
         <p>
           <!-- mat-form-field covers 100% of the width -->
-          <md-input-container dividerColor="{{(formErrors.author) ? 'warn' : 'primary'}}">
+          <mat-input-container dividerColor="{{(formErrors.author) ? 'warn' : 'primary'}}">
             <input mdInput formControlName="author" placeholder="Name *" type="text">
-            <md-hint *ngIf="(formErrors.author)">
+            <mat-hint *ngIf="(formErrors.author)">
               <span>{{formErrors.author}}</span>
-            </md-hint>
-          </md-input-container>
+            </mat-hint>
+          </mat-input-container>
         </p>
-        <md-slider min="1" max="5" step="1" value="5" thumbLabel tickInterval="1" formControlName="rating" [value]="5"></md-slider>
+        <mat-slider min="1" max="5" step="1" value="5" thumbLabel tickInterval="1" formControlName="rating" [value]="5"></mat-slider>
         <p>
-          <md-input-container dividerColor="{{(formErrors.comment) ? 'warn' : 'primary'}}">
+          <mat-input-container dividerColor="{{(formErrors.comment) ? 'warn' : 'primary'}}">
             <textarea mdInput formControlName="comment" placeholder="Your comment *" rows="8"></textarea>
-            <md-hint *ngIf="(formErrors.comment)">
+            <mat-hint *ngIf="(formErrors.comment)">
                  <span>{{formErrors.comment}}</span>
-            </md-hint>
-          </md-input-container>
+            </mat-hint>
+          </mat-input-container>
         </p>
-        <button type="submit" md-button class="background-primary text-floral-white" [disabled]="commentForm.invalid">
+        <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="commentForm.invalid">
           Submit
         </button>
       </form>
@@ -72,7 +72,7 @@
     <p>{{errMsg}}</p>
   </div>
   <div [hidden]="dish || errMsg">
-    <md-spinner></md-spinner><h4>Loading . . . Please Wait</h4>
+    <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
   </div>
 </div>
 

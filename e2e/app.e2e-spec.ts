@@ -29,7 +29,7 @@ describe('confusion App', () => {
 
   it('should navigate to dishdetail us page by clicking on the menu link', () => {
     page.navigateTo('/menu');
-    const navlink = page.getElement('md-grid-tile');
+    const navlink = page.getElement('mat-grid-tile');
 
     expect(page.getElementText('h3')).toBe('Menu');
   });

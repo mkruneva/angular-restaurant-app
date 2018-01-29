@@ -13,13 +13,13 @@
         <p>The restaurant traces its humble beginnings to <em>The Frying Pan</em>, a successful chain started by our CEO, Mr. Peter Pan, that featured for the first time the world's best cuisines in a pan.</p>
       </div>
       <div fxFlex="30">
-        <md-card>
-          <md-card-header>
-            <md-card-title>
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>
               <h2>Facts At a Glance</h2>
-            </md-card-title>
-          </md-card-header>
-          <md-card-content>
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
             <dl>
               <dt>Started</dt>
               <dd>3 Feb. 2013</dd>
@@ -30,13 +30,13 @@
               <dt>Employees</dt>
               <dd>40</dd>
             </dl>
-          </md-card-content>
-        </md-card>
+          </mat-card-content>
+        </mat-card>
       </div>
     </div>
   </div>
   <div fxFlex>
-    <md-card>
+    <mat-card>
       <blockquote>
         <h3>You better cut the pizza in four pieces because
                             I'm not hungry enough to eat six.</h3>
@@ -44,26 +44,26 @@
           <cite>The Wit and Wisdom of Yogi Berra, P. Pepe, Diversion Books, 2014</cite>
         </footer>
       </blockquote>
-    </md-card>
+    </mat-card>
   </div>
   <div fxFlex>
     <h2>Corporate Leadership</h2>
-    <md-list *ngIf="leaders" [@expand]>
-      <md-list-item *ngFor="let leader of leaders">
-        <img md-list-avatar src="{{BaseURL + leader.image}}" alt="{{leader.name}}">
-        <h1 md-line> {{leader.name}} {{leader.abbr}}</h1>
-        <p md-line> {{leader.designation}} </p>
-        <p md-line>
+    <mat-list *ngIf="leaders" [@expand]>
+      <mat-list-item *ngFor="let leader of leaders">
+        <img mat-list-avatar src="{{BaseURL + leader.image}}" alt="{{leader.name}}">
+        <h1 mat-line> {{leader.name}} {{leader.abbr}}</h1>
+        <p mat-line> {{leader.designation}} </p>
+        <p mat-line>
           <span> {{leader.description}} </span>
         </p>
-      </md-list-item>
-    </md-list>
+      </mat-list-item>
+    </mat-list>
     <div *ngIf="errMsg">
         <h2>Error</h2>
         <p>{{errMsg}}</p>
     </div>
     <div [hidden]="leaders || errMsg">
-        <md-spinner></md-spinner><h4>Loading . . . Please Wait</h4>
+        <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
     </div>
   </div>
 </div>
