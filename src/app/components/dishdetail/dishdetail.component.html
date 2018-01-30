@@ -46,7 +46,7 @@
         <p>
           <!-- mat-form-field covers 100% of the width -->
           <mat-input-container dividerColor="{{(formErrors.author) ? 'warn' : 'primary'}}">
-            <input mdInput formControlName="author" placeholder="Name *" type="text">
+            <input matInput formControlName="author" placeholder="Name *" type="text">
             <mat-hint *ngIf="(formErrors.author)">
               <span>{{formErrors.author}}</span>
             </mat-hint>
@@ -55,7 +55,7 @@
         <mat-slider min="1" max="5" step="1" value="5" thumbLabel tickInterval="1" formControlName="rating" [value]="5"></mat-slider>
         <p>
           <mat-input-container dividerColor="{{(formErrors.comment) ? 'warn' : 'primary'}}">
-            <textarea mdInput formControlName="comment" placeholder="Your comment *" rows="8"></textarea>
+            <textarea matInput formControlName="comment" placeholder="Your comment *" rows="8"></textarea>
             <mat-hint *ngIf="(formErrors.comment)">
                  <span>{{formErrors.comment}}</span>
             </mat-hint>

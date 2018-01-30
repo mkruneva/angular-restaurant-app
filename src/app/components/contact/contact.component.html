@@ -38,30 +38,30 @@
     <h3>Send us your feedback</h3>
     <form novalidate [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
       <p>
-        <mat-input-container class="half-width" dividerColor="{{(formErrors.firstname) ? 'warn' : 'primary'}}">
-          <input mdInput formControlName="firstname" placeholder="First Name *" type="text">
+        <mat-form-field class="half-width" dividerColor="{{(formErrors.firstname) ? 'warn' : 'primary'}}">
+          <input matInput formControlName="firstname" placeholder="First Name *" type="text">
           <mat-hint *ngIf="(formErrors.firstname)">
             <span>{{formErrors.firstname}}</span>
         </mat-hint>
-        </mat-input-container>
-        <mat-input-container class="half-width" dividerColor="{{(formErrors.lastname) ? 'warn' : 'primary'}}">
-          <input mdInput formControlName="lastname" placeholder="Last Name *" type="text">
+        </mat-form-field>
+        <mat-form-field class="half-width" dividerColor="{{(formErrors.lastname) ? 'warn' : 'primary'}}">
+          <input matInput formControlName="lastname" placeholder="Last Name *" type="text">
           <mat-hint *ngIf="(formErrors.lastname)">
               <span>{{formErrors.lastname}}</span>
           </mat-hint>
-        </mat-input-container>
-        <mat-input-container class="half-width" dividerColor="{{(formErrors.tel) ? 'warn' : 'primary'}}">
-          <input mdInput formControlName="tel" placeholder="Tel Number" type="tel" pattern="[0-9]*">
+        </mat-form-field>
+        <mat-form-field class="half-width" dividerColor="{{(formErrors.tel) ? 'warn' : 'primary'}}">
+          <input matInput formControlName="tel" placeholder="Tel Number" type="tel" pattern="[0-9]*">
           <mat-hint *ngIf="(formErrors.tel)">
               <span>{{formErrors.tel}}</span>
           </mat-hint>
-        </mat-input-container>
-        <mat-input-container class="half-width" dividerColor="{{(formErrors.email) ? 'warn' : 'primary'}}">
-          <input mdInput formControlName="email" placeholder="Email" type="email" email>
+        </mat-form-field>
+        <mat-form-field class="half-width" dividerColor="{{(formErrors.email) ? 'warn' : 'primary'}}">
+          <input matInput formControlName="email" placeholder="Email" type="email" email>
           <mat-hint *ngIf="(formErrors.email)">
               <span>{{formErrors.email}}</span>
           </mat-hint>
-        </mat-input-container>
+        </mat-form-field>
       </p>
       <table class="form-size">
         <td>
@@ -76,12 +76,12 @@
         </td>
       </table>
       <p>
-        <mat-input-container class="full-width" dividerColor="{{(formErrors.email) ? 'warn' : 'primary'}}">
-          <textarea mdInput formControlName="message" placeholder="Your feedback *" cols="85" rows="8"></textarea>
+        <mat-form-field class="full-width" dividerColor="{{(formErrors.email) ? 'warn' : 'primary'}}">
+          <textarea matInput formControlName="message" placeholder="Your feedback *" cols="85" rows="8"></textarea>
           <mat-hint *ngIf="(formErrors.message)">
               <span>{{formErrors.message}}</span>
           </mat-hint>
-        </mat-input-container>
+        </mat-form-field>
       </p>
       <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="feedbackForm.invalid">
          Submit
