@@ -34,6 +34,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { RestangularModule, Restangular } from 'ngx-restangular';
 import { RestangularConfigFactory } from './shared/restConfig';
 import { baseURL } from './shared/baseurl';
+import { localURL } from './shared/baseurl';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { baseURL } from './shared/baseurl';
     RestangularModule.forRoot(RestangularConfigFactory)
   ],
   providers: [ DishService, PromotionService, LeaderService, FeedbackService,
-              {provide: 'BaseURL', useValue: baseURL}, ProcessHttpmsgService ],
+              {provide: 'BaseURL', useValue: baseURL}, {provide: 'LocalURL', useValue: localURL},
+              ProcessHttpmsgService ],
   entryComponents: [ LoginComponent ],
   bootstrap: [ AppComponent ]
 })
