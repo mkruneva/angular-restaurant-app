@@ -8,7 +8,7 @@
     <mat-dialog-content>
     <p>
       <mat-input-container>
-        <input mdInput placeholder="user name" type="text" [(ngModel)]="user.username" 
+        <input matInput placeholder="user name" type="text" [(ngModel)]="user.username" 
                name="username" #username="ngModel" required>
         <mat-hint>
           <span [hidden]="username.pristine"> 
@@ -19,7 +19,7 @@
         </mat-hint>
       </mat-input-container>
       <mat-input-container>
-        <input mdInput placeholder="passowrd" type="password" [(ngModel)]="user.password" 
+        <input matInput placeholder="passowrd" type="password" [(ngModel)]="user.password" 
                name="password" #password="ngModel" required>
         <mat-hint>
           <span [hidden]="password.pristine"> 

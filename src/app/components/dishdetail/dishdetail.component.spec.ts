@@ -2,16 +2,18 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserAnimationBuilder } from '@angular/platform-browser/animations/src/animation_builder';
-import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators, FormGroupDirective } from '@angular/forms';
+import { MatSliderModule } from '@angular/material';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { Dish } from '../../shared/dish';
 import { DISHES } from '../../shared/dishes';
 import { Comment } from '../../shared/comment';
 import { DishService } from '../../services/dish.service';
 import { baseURL } from '../../shared/baseurl';
+import { localURL } from '../../shared/baseurl';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
@@ -36,11 +38,14 @@ describe('DishdetailComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ DishdetailComponent ],
-      imports: [ BrowserAnimationsModule, MaterialModule, FlexLayoutModule,
+      imports: [ BrowserAnimationsModule, FlexLayoutModule,
         FormsModule, ReactiveFormsModule,
-        RouterTestingModule.withRoutes([{ path: 'dishdetail', component: DishdetailComponent }]) ],
-      providers: [ {provide: DishService, useValue: DishServiceMock }, {provide: 'BaseURL', useValue: baseURL }
-      ]
+        RouterTestingModule.withRoutes([{ path: 'dishdetail', component: DishdetailComponent }]),
+        MatSliderModule ],
+      providers: [ {provide: DishService, useValue: DishServiceMock },
+                   {provide: 'BaseURL', useValue: baseURL },
+                   {provide: 'LocalURL', useValue: localURL }],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
 

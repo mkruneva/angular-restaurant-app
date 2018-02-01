@@ -4,13 +4,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { BrowserAnimationBuilder } from '@angular/platform-browser/animations/src/animation_builder';
-import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { Dish } from '../../shared/dish';
 import { DISHES } from '../../shared/dishes';
 import { DishService } from '../../services/dish.service';
 import { baseURL } from '../../shared/baseurl';
+import { localURL } from '../../shared/baseurl';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
@@ -31,12 +32,13 @@ describe('MenuComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ MenuComponent ],
-      imports: [ BrowserAnimationsModule, MaterialModule, FlexLayoutModule,
+      imports: [ BrowserAnimationsModule, FlexLayoutModule,
                  RouterTestingModule.withRoutes([{ path: 'menu', component: MenuComponent }]) ],
       providers: [
          {provide: DishService, useValue: DishServiceStub },
-         {provide: 'BaseURL', useValue: baseURL }
-      ]
+         {provide: 'BaseURL', useValue: baseURL },
+         {provide: 'LocalURL', useValue: localURL }],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
 
@@ -62,8 +64,8 @@ describe('MenuComponent', () => {
   it('should use dishes in the template', () => {
     fixture.detectChanges();
 
-    let de:      DebugElement;
-    let el:      HTMLElement;
+    let de: DebugElement;
+    let el: HTMLElement;
     de = fixture.debugElement.query(By.css('h1'));
     el = de.nativeElement;
 

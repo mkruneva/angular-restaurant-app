@@ -4,7 +4,6 @@ import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -19,13 +18,17 @@ import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { LoginComponent } from './components/login/login.component';
+import { MatButtonModule, MatCheckboxModule, MatDatepickerModule, MatFormFieldModule,
+  MatInputModule, MatRadioModule, MatSelectModule, MatSliderModule,
+  MatSlideToggleModule, MatToolbarModule, MatListModule, MatGridListModule,
+  MatCardModule, MatIconModule, MatProgressSpinnerModule, MatDialogModule } from '@angular/material';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { APP_BASE_HREF } from '@angular/common';
 
 import { RestangularModule, Restangular } from 'ngx-restangular';
 import { RestangularConfigFactory } from './shared/restConfig';
-import { baseURL } from './shared/baseurl';
 
 describe('AppComponent', () => {
 
@@ -45,14 +48,17 @@ describe('AppComponent', () => {
       imports: [
         BrowserModule,
         BrowserAnimationsModule,
-        MaterialModule,
         FlexLayoutModule,
         AppRoutingModule,
         FormsModule,
         ReactiveFormsModule,
-        RestangularModule.forRoot(RestangularConfigFactory)
+        RestangularModule.forRoot(RestangularConfigFactory),
+        MatInputModule, MatRadioModule, MatSelectModule, MatSliderModule,
+        MatSlideToggleModule, MatToolbarModule, MatListModule, MatGridListModule,
+        MatCardModule, MatIconModule, MatProgressSpinnerModule, MatDialogModule
       ],
-      providers: [{provide: APP_BASE_HREF, useValue : '/' }]
+      providers: [{provide: APP_BASE_HREF, useValue : '/' }],
+      schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
 
   }));

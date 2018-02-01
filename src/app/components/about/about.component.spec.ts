@@ -4,13 +4,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { BrowserAnimationBuilder } from '@angular/platform-browser/animations/src/animation_builder';
-import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { Leader } from '../../shared/leader';
 import { LEADERS } from '../../shared/leaders';
 import { LeaderService } from '../../services/leader.service';
 import { baseURL } from '../../shared/baseurl';
+import { localURL } from '../../shared/baseurl';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
@@ -30,12 +31,14 @@ describe('AboutComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ AboutComponent ],
-      imports: [ BrowserAnimationsModule, MaterialModule, FlexLayoutModule,
+      imports: [ BrowserAnimationsModule, FlexLayoutModule,
         RouterTestingModule.withRoutes([{ path: 'about', component: AboutComponent }]) ],
       providers: [
         {provide: LeaderService, useValue: LeaderServiceStub },
-        {provide: 'BaseURL', useValue: baseURL }
-      ]
+        {provide: 'BaseURL', useValue: baseURL },
+        {provide: 'LocalURL', useValue: localURL }
+      ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
 

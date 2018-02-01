@@ -4,8 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { BrowserAnimationBuilder } from '@angular/platform-browser/animations/src/animation_builder';
-import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { Leader } from '../../shared/leader';
 import { LEADERS } from '../../shared/leaders';
@@ -17,6 +17,7 @@ import { Promotion } from '../../shared/promotion';
 import { PROMOTIONS } from '../../shared/promotions';
 import { PromotionService } from '../../services/promotion.service';
 import { baseURL } from '../../shared/baseurl';
+import { localURL } from '../../shared/baseurl';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
@@ -48,14 +49,15 @@ describe('HomeComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ HomeComponent ],
-      imports: [ BrowserAnimationsModule, MaterialModule, FlexLayoutModule,
+      imports: [ BrowserAnimationsModule, FlexLayoutModule,
         RouterTestingModule.withRoutes([{ path: 'home', component: HomeComponent }]) ],
       providers: [
         {provide: LeaderService, useValue: LeaderServiceStub },
         {provide: DishService, useValue: DishServiceStub },
         {provide: PromotionService, useValue: PromotionServiceStub },
-        {provide: 'BaseURL', useValue: baseURL }
-      ]
+        {provide: 'BaseURL', useValue: baseURL },
+        {provide: 'LocalURL', useValue: localURL }],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
     let leaderService = TestBed.get(LeaderService);
